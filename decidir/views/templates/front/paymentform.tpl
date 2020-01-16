@@ -5,8 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <script src="https://live.decidir.com/static/v1/decidir.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write("<script src='https://code.jquery.com/jquery-1.11.1.min.js'>\x3C/script>")</script>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="{$url_base}modules/decidir/css/form_decidir.css">
     <script language="javascript" src="{$jsLinkForm}"></script>
@@ -142,6 +141,7 @@
     #new_card, #tokens_cards{
         width: auto;
         /* display: block; */
+        margin-top: 15px;
         height: 40px;
     }
 
@@ -288,16 +288,16 @@
             }
         })
 
-        $('input[type=radio][name=new_card]').change(function() {
-            $(this).prop("checked", false);
+        $('button[name=new_card]').click(function() {
             $("#form_normal").show();
             $("#form_token").hide();
+            return false;
         });
 
-        $('input[type=radio][name=tokens_cards]').change(function() {
-            $(this).prop("checked", false);
+        $('button[name=tokens_cards]').click(function() {
             $("#form_normal").hide();
             $("#form_token").show();
+            return false;
         });
 
         //seleccion de planes
@@ -580,10 +580,10 @@
                     <li>
                         <label for="card_holder_doc_type">Numero de documento</label>
                         <input type="text" data-decidir="card_holder_doc_number" placeholder="Ingrese su DNI" value=""/>
+                        <div class="clear"></div>
                     </li>
-                    <li>
-                        <input type="radio" name="tokens_cards" id="tokens_cards" class="left">
-                        <label for="security_code" class="label_chose_card left">Tarjetas Guardadas</label>
+                    <li style="margin-top: 15px">
+                        <button name="tokens_cards" id="tokens_cards" class="left">Tarjetas Guardadas</button>
                         <div class="clear"></div>
                     </li>
                 </ul>
@@ -603,10 +603,10 @@
                         <label for="security_code">Codigo de seguridad</label>
                         <input type="text"  data-decidir="security_code" class="left" id="cvc" placeholder="" value="" maxlength="4"/>
                         <input type="button" placeholder="" class="left" id="cvc_help" value="?" />
+                        <div class="clear"></div>
                     </li>
-                    <li>
-                        <input type="radio" name="new_card" id="new_card" class="clear left">
-                        <label for="security_code" class="label_chose_card left">Nueva Tarjeta</label>
+                    <li style="margin-top: 15px">
+                        <button name="new_card" id="new_card">Nueva Tarjeta</button>
                         <div class="clear"></div>
                     </li>
                 </ul>
